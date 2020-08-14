@@ -1,0 +1,66 @@
+<%- include('ek/header', {bot, user, path}) %>
+<script type="text/javascript">
+var title = "Astarius - Hakkımızda";
+document.title = title;
+document.getElementById("hakkımızda").classList.add('active');
+</script>
+ <style>
+      html, body {
+          background-color:#fff !important;
+          background: url(https://cdn.discordapp.com/attachments/636915676665217035/733725416266924123/inspiration-geometry.png) repeat 0 0;
+          max-width: 100%;
+          overflow-x: hidden;
+          -webkit-animation: slide 20s linear infinite;
+      }
+      body::-webkit-scrollbar {
+          width: 0.6em;
+      }
+      body::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: #FF0F00;
+        outline: 1px solid #fff;
+      }
+      a{
+        text-decoration:none !important;
+      }
+      @-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: 0 -400px; }
+}
+    </style>
+<div class="container">
+	<div class="jumbotron">
+		<div align="center">
+      <h3 style="color:#333">
+        Hakkımızda
+      </h3>
+		   <p style="font-size:15px; color:,#333">
+       Türk botlarının tanıtıldığı ve reklamının yapıldığı bot sistemidir botlarınızı siteden ekleyip düzenleye bildiğiniz bir sistemdir
+      </p>
+      <br>
+      <a href="https://discord.gg/RTAvmjn" target="_blank" class="btn btn-sucess" style="background:linear-gradient(to right,#008000 0,#32CD32 100%); color:#fff">Discord Sunucusuna Katıl</a>
+      <br><br>
+      <h4 style="color:#333;">Ekibimiz</h4>
+      <div class="ekip">
+    <img src="https://cdn.discordapp.com/attachments/724755934227857479/732869152817152110/a_0b34295d74fced7edba79d1ca4788f09.png?size=2048" alt="Avatar"><br>
+       <div class="ekip-isim">Dream41</div>
+        <p>
+          Dream41 - Site Yapımcısı
+        </p>
+           <img src="https://cdn.discordapp.com/avatars/478874404177051648/e6546147a92662c1ba91a954b5441463.png?size=2048" alt="Avatar"><br>
+       <div class="ekip-isim">Mert</div>
+        <p>
+          Mert - Proje Yapımcısı
+        </p>
+      <img src="https://cdn.discordapp.com/attachments/724755934227857479/733193440535511080/JPEG_20200715_113500.jpg" alt="Avatar"><br>
+       <div class="ekip-isim">AloneDesign</div>
+        <p>
+          AloneDesign - Proje Yapımcısı
+        </p>
+      </div>
+</div>
+  </div></div></div>
+<% include ./ek/footer %>

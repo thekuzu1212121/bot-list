@@ -1,0 +1,141 @@
+<%- include('ek/header', {bot, user, path}) %>
+
+<script type="text/javascript">
+document.getElementById("anasayfa").classList.add('active');
+</script>
+ <style>
+      html, body {
+          background-color:#fff !important;
+          background: url(https://cdn.discordapp.com/attachments/636915676665217035/733725416266924123/inspiration-geometry.png) repeat 0 0;
+          max-width: 100%;
+          overflow-x: hidden;
+          -webkit-animation: slide 20s linear infinite;
+      }
+      body::-webkit-scrollbar {
+          width: 0.6em;
+      }
+      body::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: #FF0F00;
+        outline: 1px solid #fff;
+      }
+      a{
+        text-decoration:none !important;
+      }
+      @-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: 0 -400px; }
+}
+    </style>
+<script language="javascript">
+    document.onmousedown=disableclick;
+    status="Right Click Disabled";
+    Function disableclick(event)
+    {
+      if(event.button==2)
+       {
+         alert(status);
+         return false;    
+       }
+    }
+</script>
+
+<body oncontextmenu="return false">
+</body>
+    
+</div>
+<div class="container">
+ <div align="center">
+     <style>
+    .botdurum{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      display:inline-block;
+    }
+    
+    .dnd{
+      background:#f44336;
+    }
+        .online{
+      background:#4CAF50;
+    }
+        .idle{
+      background:#FF9800;
+    }
+        .offline{
+      background:#616161;
+    }
+  </style>  
+    <p style="color:#333;user-select:none;">
+    </p>
+   <center> <span><img src="https://cdn.discordapp.com/attachments/733625677751910411/735475153672077313/New_Project_18_E927FEE.png" width="500px" height="90px"></span></img></center>
+  </div>
+  <center> <h3 style="color:#228B22;user-select:none;">Sertifikalı Botlar</h3></center>
+  <% if (bot.ayar.has('botlar')) { %>
+  <% const sorted = Object.keys(bot.ayar.fetch('botlar')).sort((a, b) => { return (bot.ayar.fetch(`botlar.${b}.oy`) || 0) - (bot.ayar.fetch(`botlar.${a}.oy`) || 0) }) %>
+  <% const top = sorted.splice(0, Object.keys(bot.ayar.fetch('botlar')).length) %>
+  <% const map = top.map(x=>x) %>
+	<% for(var i = 0; i < Object.keys(bot.ayar.fetch('botlar')).length; i++) { %>
+  <% let idd = map[i] %>
+   <% if(bot.ayar.has(`botlar.${idd}.durum`) === true) { %>
+    <% if (bot.ayar.fetch(`botlar.${idd}.durum`) === "Onaylı") { %>
+      <% if (bot.ayar.has(`botlar.${idd}.sertifika`) === true) { %>
+       <center>
+    <div class="alonecardan" style="height: 400px;width: 300px;margin-right: 10px;margin-bottom: 8px;">
+        <!-- <div class="row no-gutters">-->
+        <div class="col-md-12">
+           <img data-toggle="tooltip" data-placement="bottom"  title="<%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%>" src="<%=bot.ayar.fetch(`botlar.${idd}.avatar`)%>" class="card-img-top h-100" style="border-radius: 50%;width: 180px;height: 180px !important;margin: 14px" alt="..." onerror="this.onerror=null;this.src='https://cdn.discordapp.com/attachments/415626207607128076/526891779992322078/sunucuicon.png'">
+        </div>
+        <div class="col-md-12">
+            <div class="card-body">
+        <h5 class="card-title"><%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%></h5>
+        <h6 style="user-select:none;">Kütüphane: <%=bot.ayar.fetch(`botlar.${idd}.kutuphane`)%> | <span class="badge badge-secondary">OY: <%=bot.ayar.fetch(`botlar.${idd}.oy`)||0%></span></h6>
+        <p class="card-text"><%=bot.ayar.fetch(`botlar.${idd}.kisaaciklama`)%></p>
+        <p class="card-text"><a href="/bot/<%=idd%>"class="btn btn-dark" >Görüntüle</a>
+         <a target="_blank" class="btn btn-dark" href="https://discordapp.com/oauth2/authorize?client_id=<%=idd%>&scope=bot&permissions=8">Davet Et</a></p>
+          </div>
+        </div>
+    </div>
+</div>
+  </center>
+      <% } %>
+    <% } %>
+    <% } %>
+   <% } %>
+    <% } else { %>
+    <div align="center">
+      <h5 align="center" style="color:#222">
+      Sistemde hiç bot bulunmuyor.
+      </h5>
+    </div>
+    <% } %>  
+</div>
+</div></div>
+<script>
+$(document).ready(function(){
+ $("#ara").keyup(function(){
+    var value = $(this).val().toLowerCase();
+    $(".col-12, .col-sm-6, .col-md-4 .card").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  //etiket filtresi
+  $("#etiketselect").change(function(){
+    var value = $(this).val();
+    if (value === 'noneFilter') {
+      window.location.reload(true);
+      return
+    }
+    $(".col-12, .col-sm-6, .col-md-4 .card").filter(function(){
+      $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+  })
+  ;
+});
+</script>
+
+<% include ./ek/footer %>
